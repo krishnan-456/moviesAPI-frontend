@@ -28,21 +28,19 @@ const Navbar = () => {
                 </div>
             </div>
             <div className={nav ? 'w-full h-screen bg-black fixed top-0 z-50 px-10 sm:hidden ' : 'w-full h-screen bg-black fixed top-[-99999px] z-50 px-10 sm:hidden'}>
-                <div className='text-white cursor-pointer'>
-                    <div className='flex items-center justify-between mt-5'>
-                        <button className='' onClick={() => navigate("/")}>
-                            <img src={logo} alt="logo" width={45} />
-                        </button>
-                        <div className='text-white'>
-                            <MdOutlineClose size={28} onClick={handleNav} />
-                        </div>
+                <div className='flex items-center justify-between mt-5'>
+                    <button className='' onClick={() => navigate("/")}>
+                        <img src={logo} alt="logo" width={45} />
+                    </button>
+                    <div className='text-white'>
+                        <MdOutlineClose size={28} onClick={handleNav} />
                     </div>
-                    <ul className='flex flex-col items-center justify-center gap-10 font-semibold mt-[50%]'>
-                        <li>Genres</li>
-                        <li>Collections</li>
-                        <li className='border-2 px-4 py-2 hover:bg-white hover:text-black border-white'>Get started</li>
-                    </ul>
                 </div>
+                <ul className='flex flex-col items-center justify-center gap-10 font-semibold mt-[50%] text-white'>
+                    <li>Genres</li>
+                    <li>Collections</li>
+                    <li className='border-2 px-4 py-2 hover:bg-white hover:text-black border-white'>Get started</li>
+                </ul>
             </div>
         </>
 
