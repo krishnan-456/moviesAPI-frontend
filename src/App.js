@@ -12,7 +12,7 @@ const App = () => {
   const [movies, setMovies] = useState([]);
   const fetchMovies = async () => {
     try {
-      const response = await axios.get("https://movies-apis.onrender.com/api/movies");
+      const response = await axios.get("https://movies-api-cibz.onrender.com/api/movies");
       setMovies(response.data);
     } catch (err) {
       console.log(err.message);
