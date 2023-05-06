@@ -1,25 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react'
+// import Navbar from './Components/Navbar'
+import axios from 'axios';
+// import MoviesCards from './Components/MoviesCards';
+import Homepage from './Components/Homepage';
+import { Route, Routes } from 'react-router-dom';
+import WriteReview from './Components/WriteReview';
+// import API from './API/ApiConfig'
 
-function App() {
+
+const App = () => {
+  const [movies, setMovies] = useState([]);
+  const fetchMovies = async () => {
+    try {
+      const response = await axios.get("https://movies-apis.onrender.com/api/movies");
+      setMovies(response.data);
+    } catch (err) {
+      console.log(err.message);
+    }
+  }
+  useEffect(() => {
+    fetchMovies();
+  }, [])
+  // console.log(movies);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+      <Routes>
+        <Route path='/' element={<Homepage movies={movies} />} />
+        <Route path='/api/movies/:imdbId' element={<WriteReview/>} />
+      </Routes>
+    </>
+  )
 }
 
-export default App;
+export default App
