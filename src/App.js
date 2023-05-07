@@ -10,10 +10,13 @@ import WriteReview from './Components/WriteReview';
 
 const App = () => {
   const [movies, setMovies] = useState([]);
+  const [loading, setLoading] = useState(false);
   const fetchMovies = async () => {
+    setLoading(true);
     try {
       const response = await axios.get("https://movies-api-20pq.onrender.com/api/movies");
       setMovies(response.data);
+      setLoading(false);
     } catch (err) {
       console.log(err.message);
     }
@@ -25,7 +28,7 @@ const App = () => {
   return (
     <>
       <Routes>
-        <Route path='/' element={<Homepage movies={movies} />} />
+        <Route path='/' element={<Homepage movies={movies} loading={loading}/>} />
         <Route path='/api/movies/:imdbId' element={<WriteReview/>} />
       </Routes>
     </>
