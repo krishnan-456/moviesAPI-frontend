@@ -21,7 +21,7 @@ const WriteReview = () => {
     // const [displayReview, setDisplayReview] = useState([]);
     const fetchSingleMovies = async () => {
         try {
-            const response = await axios.get(`https://movies-api-rcj0.onrender.com/api/movies/${imdbId}`)
+            const response = await axios.get(`https://movies-api-20pq.onrender.com/api/movies/${imdbId}`)
             setSingleMovies(response.data)
         } catch (err) {
             console.log(err.message);
@@ -33,7 +33,7 @@ const WriteReview = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post("https://movies-api-rcj0.onrender.com/api/reviews", { reviewBody: review, imdbId: imdbId });
+            const response = await axios.post("https://movies-api-20pq.onrender.com/api/reviews", { reviewBody: review, imdbId: imdbId });
             // setDisplayReview(response.data);
             alert("Review added sucessfully");
             e.target.reset();
